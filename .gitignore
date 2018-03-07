@@ -1,3 +1,4 @@
+*.swp
 .erlang.mk
 env.mk
 *.beam
