@@ -30,7 +30,7 @@ gen_salt(Rounds)       -> do_call(fun bcrypt_port:gen_salt/2, [Rounds]).
 hashpw(Password, Salt) -> do_call(fun bcrypt_port:hashpw/3, [Password, Salt]).
 
 init([]) ->
-    {ok, Size} = application:get_env(bcrypt, pool_size),
+    Size = application:get_env(bcrypt, pool_size, 4),
     {ok, #state{size = Size}}.
 
 terminate(shutdown, _) -> ok.

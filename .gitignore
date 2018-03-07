@@ -1,3 +1,5 @@
+.erlang.mk
+env.mk
 *.beam
 ebin/*.beam
 ebin/bcrypt.app

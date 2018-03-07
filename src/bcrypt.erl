@@ -12,8 +12,7 @@ start() -> application:start(bcrypt).
 stop()  -> application:stop(bcrypt).
 
 mechanism() ->
-    {ok, M} = application:get_env(bcrypt, mechanism),
-    M.
+    application:get_env(bcrypt, mechanism, nif).
 
 gen_salt() -> do_gen_salt(mechanism()).
 gen_salt(Rounds) -> do_gen_salt(mechanism(), Rounds).

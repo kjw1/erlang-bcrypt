@@ -39,11 +39,11 @@ start_link() ->
 stop() -> gen_server:call(?MODULE, stop).
 
 gen_salt(Pid) ->
-    R = crypto:rand_bytes(16),
+    R = crypto:strong_rand_bytes(16),
     gen_server:call(Pid, {encode_salt, R}, infinity).
 
 gen_salt(Pid, LogRounds) ->
-    R = crypto:rand_bytes(16),
+    R = crypto:strong_rand_bytes(16),
     gen_server:call(Pid, {encode_salt, R, LogRounds}, infinity).
 
 hashpw(Pid, Password, Salt) ->
@@ -58,7 +58,7 @@ init([Filename]) ->
             Port = open_port(
                      {spawn, Filename}, [{packet, 2}, binary, exit_status]),
             ok = bcrypt_pool:available(self()),
-            {ok, Rounds} = application:get_env(bcrypt, default_log_rounds),
+            Rounds = application:get_env(bcrypt, default_log_rounds, 12),
             {ok, #state{port = Port, default_log_rounds = Rounds}};
         {error, Reason} ->
             ?BCRYPT_ERROR("Can't open file ~p: ~p", [Filename, Reason]),

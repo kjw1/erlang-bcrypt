@@ -1,3 +1,8 @@
+include env.mk
+
+ERL_CFLAGS = -fPIC -I ${ERTS_INCLUDE_DIR} -I ${ERL_INTERFACE_INCLUDE_DIR}
+ERL_LDFLAGS = -L ${ERL_INTERFACE_LIB_DIR} -lerl_interface -lei
+
 compile: ../priv/bcrypt
 
 ../priv/bcrypt:

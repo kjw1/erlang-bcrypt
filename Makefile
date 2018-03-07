@@ -1,12 +1,7 @@
-all: compile
+PROJECT=bcrypt
 
-compile:
-	@rebar compile
+PROJECT_DESCRIPTION = bcrypt wrapper for erlang
+PROJECT_VERSION = 0.5.4
+LOCAL_DEPS = crypto
 
-tests:
-	@rebar eunit
-
-clean:
-	@rebar clean
-
-.PHONY: clean compile tests
+include erlang.mk
