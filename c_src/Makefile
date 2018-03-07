@@ -13,6 +13,6 @@ compile: ../priv/bcrypt ../priv/bcrypt_nif.so
 
 clean:
 	@rm -f ../priv/bcrypt
-	@rm -f ../priv/bcrypt.so
+	@rm -f ../priv/bcrypt_nif.so
 
 .PHONY: clean compile
