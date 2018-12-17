@@ -1,7 +1,7 @@
 include env.mk
 
-ERL_CFLAGS = -fPIC -I${ERTS_INCLUDE_DIR} -I${ERL_INTERFACE_INCLUDE_DIR} -I/usr/local/lib/erlang/usr/include
-ERL_LDFLAGS = -L${ERL_INTERFACE_LIB_DIR} -L/usr/local/lib/erlang/usr/lib -lerl_interface -lei
+ERL_CFLAGS = -fPIC -I${ERTS_INCLUDE_DIR} -I${ERL_INTERFACE_INCLUDE_DIR}
+ERL_LDFLAGS = -L${ERL_INTERFACE_LIB_DIR} -flat_namespace -undefined suppress -lerl_interface -lei
 
 compile: ../priv/bcrypt ../priv/bcrypt_nif.so
 
